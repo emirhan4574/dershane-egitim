@@ -20,8 +20,7 @@
       "package": "com.dershane.app"
     },
     "web": {
-      "bundler": "metro",
-      "output": "static"
+      "bundler": "metro"
     },
     "experiments": {
       "baseUrl": "/dershane-egitim"
