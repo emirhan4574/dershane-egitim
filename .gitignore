@@ -1,0 +1,40 @@
+# Bağımlılıklar
+node_modules/
+desktop/node_modules/
+server/node_modules/
+
+# Expo / build
+.expo/
+dist/
+web-build/
+.vercel/
+.netlify/
+
+# Gizliler — asla commit etme
+.env
+.env.*
+!.env.example
+server/.env
+server/.env.*
+!server/.env.example
+
+# Sertifikalar / anahtarlar
+*.jks
+*.p8
+*.p12
+*.key
+*.pem
+*.mobileprovision
+credentials.json
+**/serviceAccount*.json
+
+# Sistem / IDE
+.DS_Store
+Thumbs.db
+*.orig.*
+npm-debug.*
+.idea/
+.vscode/
+
+# Yerel listeler / geçici
+*.log

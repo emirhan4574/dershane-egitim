@@ -1,0 +1,50 @@
+{
+  "name": "dershane-app",
+  "version": "1.0.0",
+  "main": "index.ts",
+  "scripts": {
+    "start": "expo start",
+    "android": "expo start --android",
+    "ios": "expo start --ios",
+    "web": "expo start --web",
+    "api": "npm --prefix server start",
+    "api:migrate": "npm --prefix server run migrate",
+    "desktop": "echo Masaüstü ertelendi — kullanin: npm run web && exit 1",
+    "sql:up": "docker compose -f database/docker-compose.yml up -d"
+  },
+  "dependencies": {
+    "@expo-google-fonts/dm-sans": "^0.4.2",
+    "@expo-google-fonts/fraunces": "^0.4.1",
+    "@expo-google-fonts/lexend": "^0.4.1",
+    "@expo-google-fonts/plus-jakarta-sans": "^0.4.2",
+    "@expo-google-fonts/sora": "^0.4.2",
+    "@expo-google-fonts/syne": "^0.4.2",
+    "@expo/metro-runtime": "~5.0.5",
+    "@expo/vector-icons": "^14.1.0",
+    "@react-native-async-storage/async-storage": "2.1.2",
+    "@react-navigation/bottom-tabs": "^7.3.10",
+    "@react-navigation/native": "^7.1.6",
+    "@react-navigation/native-stack": "^7.3.10",
+    "date-fns": "^4.1.0",
+    "expo": "~53.0.0",
+    "expo-asset": "~11.1.7",
+    "expo-document-picker": "~13.1.5",
+    "expo-font": "~13.3.2",
+    "expo-image-picker": "~16.1.4",
+    "expo-linking": "~7.1.5",
+    "expo-status-bar": "~2.2.3",
+    "firebase": "^11.6.0",
+    "react": "19.0.0",
+    "react-dom": "19.0.0",
+    "react-native": "0.79.2",
+    "react-native-safe-area-context": "5.4.0",
+    "react-native-screens": "~4.10.0",
+    "react-native-web": "^0.20.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.26.0",
+    "@types/react": "~19.0.10",
+    "typescript": "~5.8.3"
+  },
+  "private": true
+}

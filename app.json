@@ -1,0 +1,28 @@
+{
+  "expo": {
+    "name": "Dershane App",
+    "slug": "dershane-app",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "resizeMode": "contain",
+      "backgroundColor": "#0C3B2E"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.dershane.app"
+    },
+    "android": {
+      "adaptiveIcon": {
+        "backgroundColor": "#0C3B2E"
+      },
+      "package": "com.dershane.app"
+    },
+    "web": {},
+    "plugins": [
+      "expo-font",
+      "expo-asset"
+    ]
+  }
+}

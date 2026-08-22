@@ -1,0 +1,66 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function signedIn() {
+      return request.auth != null;
+    }
+
+    function userDoc() {
+      return get(/databases/$(database)/documents/users/$(request.auth.uid)).data;
+    }
+
+    function isTeacher() {
+      return signedIn() && userDoc().role == 'teacher';
+    }
+
+    function isSelf(uid) {
+      return signedIn() && request.auth.uid == uid;
+    }
+
+    match /users/{uid} {
+      allow read: if isTeacher() || isSelf(uid);
+      allow create: if isTeacher();
+      allow update: if isTeacher() || (isSelf(uid) && !request.resource.data.diff(resource.data).affectedKeys().hasAny(['role', 'points', 'classId']));
+      allow delete: if isTeacher();
+    }
+
+    match /classes/{classId} {
+      allow read: if signedIn();
+      allow write: if isTeacher();
+    }
+
+    match /messages/{messageId} {
+      allow read: if signedIn() && (
+        isTeacher() ||
+        userDoc().classId == resource.data.classId
+      );
+      allow create: if isTeacher();
+      allow update, delete: if isTeacher();
+    }
+
+    match /denemes/{denemeId} {
+      allow read: if isTeacher() || (signedIn() && resource.data.studentId == request.auth.uid);
+      allow write: if isTeacher();
+    }
+
+    match /homeworks/{homeworkId} {
+      allow read: if signedIn() && (
+        isTeacher() ||
+        userDoc().classId == resource.data.classId
+      );
+      allow write: if isTeacher();
+    }
+
+    match /homeworkStatuses/{statusId} {
+      allow read: if isTeacher() || (signedIn() && resource.data.studentId == request.auth.uid);
+      allow write: if isTeacher();
+    }
+
+    match /studyItems/{itemId} {
+      allow read: if isTeacher() || (signedIn() && resource.data.studentId == request.auth.uid);
+      allow create: if isTeacher() || (signedIn() && request.resource.data.studentId == request.auth.uid);
+      allow update: if isTeacher() || (signedIn() && resource.data.studentId == request.auth.uid);
+      allow delete: if isTeacher() || (signedIn() && resource.data.studentId == request.auth.uid);
+    }
+  }
+}
