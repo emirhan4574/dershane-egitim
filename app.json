@@ -19,7 +19,13 @@
       },
       "package": "com.dershane.app"
     },
-    "web": {},
+    "web": {
+      "bundler": "metro",
+      "output": "static"
+    },
+    "experiments": {
+      "baseUrl": "/dershane-egitim"
+    },
     "plugins": [
       "expo-font",
       "expo-asset"
